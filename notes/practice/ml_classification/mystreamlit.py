@@ -12,16 +12,17 @@ import requests
 
 st.title("Calculate")
 
-age = st.text_input("Enter first number","0")
-salary = st.text_input("Enter second number","5")
-
-operation = st.selectbox("select operation:", ["Addition","Substraction"])
+age = st.text_input("Enter age","20")
+salary = st.text_input("Enter salary","20000")
 
 # press button then the results will display
 if st.button("prediction"):
-    #spinner to show loading/computing
   url = 'http://127.0.0.1:8000/model'
 
-  request_data = json.dumps({'age':40,'salary':20000})
+  request_data = json.dumps({'age':age,'salary':salary})
   response = requests.post(url,request_data)
-  print(response.text)
+
+  if response.text=="the prediction is [0]":
+    st.write("will not purchase insurance")
+  else:
+    st.write("will purchase")  

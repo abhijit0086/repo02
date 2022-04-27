@@ -24,6 +24,7 @@ def hello_world():
     print(salary)
     
     prediction = local_classifier.predict(local_scaler.transform(np.array([[age,salary]])))
+    print("")
     
     return "the prediction is {}".format(prediction)
 
